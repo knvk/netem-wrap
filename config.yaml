@@ -1,0 +1,30 @@
+---
+name: example
+interface: eno1
+filter: 1.1.1.1/32
+repeat: forever
+events:
+- duration: 5000
+  rules:
+  - clear
+- duration: 30000
+  rules:
+  - delay 100ms 5ms distribution normal
+- duration: 5000
+  rules:
+  - clear
+- duration: 30000
+  rules:
+  - delay 50ms 5ms distribution normal
+  - loss 10%
+- duration: 5000
+  rules:
+  - clear
+- duration: 120000
+  rules:
+  - delay 50ms
+  - loss 2%
+  - rate 72Mbit
+- duration: 5000
+  rules:
+  - clear
